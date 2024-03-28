@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript Discussion</title>
+	<style>
+		p{
+			background-color: #b3b3b3;
+			border: 3px solid #FFFFFF;
+			padding: 3%;
+			font-size: 1.1em;
+			line-height: 1.5;
+		}
+	</style>
+
+	<script type="text/javascript">
+	function displayInformation () {
+		// Your code goes here. 
+		// Do not change any other code in this file
+		// All of the steps below must be achieved using JavaScript!
+
+		// 1. Change the h1 element to your name.
+		document.querySelector('h1').textContent = 'Keye Chen';
+
+		// 2. Update the three span elements using ONLY JavaScript
+
+
+		// Display the URL of the page
+		document.querySelector('#URL').textContent = window.location.href;
+
+		// Display the number of list items on the page
+		var listItemCount = document.querySelectorAll('li').length;
+		document.querySelector('#items').textContent = listItemCount;
+
+		// Display the current date and time
+		var currentTime = new Date().toLocaleString(); // Gets date and time in a readable format
+		document.querySelector('#time').textContent = currentTime;
+    }
+
+	function stylePage () {
+		document.body.style.backgroundColor = 'grey'; // Replace with your chosen color
+		document.body.style.margin = '10px'; // Replace with your chosen margin value
+
+
+		// 3. Change the background color and margin for the entire page.
+
+	}
+
+    // 4. If someone uses the keyboard shortcut to copy the words "University of Michigan" then add the words "Go Blue" to the final div.  
+    //    Each occurence should be on a separate line.  Don't use paragraphs. 
+	// Global variable to keep track of the copy command usage
+	var copyCount = 0;
+
+	function copyFunction() {
+		// Increment the count each time the function is called
+		copyCount++;
+
+		// Get the cheer div
+		var cheerDiv = document.querySelector('#cheer');
+
+		// Create a new span element for the "Go Blue!" text
+		var newCheerText = document.createElement('span');
+		newCheerText.textContent = "Go Blue! ";
+
+		// Use if-else statement to style the text
+		if (copyCount % 2 === 0) { // Check if the count is even
+			newCheerText.style.color = 'yellow';
+		} else { // If the count is odd
+			newCheerText.style.color = 'blue';
+		}
+
+		// Append the new styled text to the cheer div
+		cheerDiv.appendChild(newCheerText);
+	}
+
+
+	
+</script>
+
+</head>
+<body>
+	<h1>Your name goes here</h1>
+	<h2>Use JavaScript to display the following information :</h2>
+	<p>
+		URL of this page : <span id = "URL"></span><br/>
+		Number of list items on this page: <span id = "items"></span><br/>
+		Current date/time : <span id = "time"></span><br/>
+	</p>
+	<button type="button" onClick="displayInformation()">Display Information!</button>
+	<button type="button" onClick="stylePage()">Style the Page</button>
+
+	<ol>
+		<li>Ohio</li>
+		<li>Pennsylvania</li>
+		<li>New York</li>
+		<li>California</li>
+		<li>Michigan</li>
+	</ol>
+	<ul>
+		<li>Kent State</li>
+		<li>University of Pittsburgh</li>
+		<li>NYU</li>
+		<li>California State University Long Beach</li>
+		<li oncopy="copyFunction()">University of Michigan</li>
+	</ul>
+	<div id="cheer">
+
+	</div>
+
+</body>
+</html>
